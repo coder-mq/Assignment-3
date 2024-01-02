@@ -1,0 +1,219 @@
+1) How can you randomize the items of a list in place in Python??
+
+Answer 1)  To randomize a list in place, you can use the shuffle method from the random module. This function modifies the list in-place.
+import random
+
+my_list = [1, 2, 3, 4, 5]
+random.shuffle(my_list)
+print(my_list)
+-------------------------------------------------------------------------------------------------------------------
+
+2) What does [::-1] do?
+Answer 2) This is a slicing notation that reverses a sequence. In the example below, it reverses a string.
+
+my_string = "Hello, World!"
+reversed_string = my_string[::-1]
+print(reversed_string)
+---------------------------------------------------------------------------------------------------------------------
+
+3) What is the lambda function in Python?
+Answer 3) Lambda functions are anonymous functions defined using the lambda keyword. They are often used for short, simple operations.
+add = lambda x, y: x + y
+print(add(2, 3))
+-------------------------------------------------------------------------------------------------------------------
+
+4) What Is the Difference Between Classmethod and Staticmethod?
+Answer 4) @classmethod is used for methods that operate on the class itself.
+@staticmethod is used for methods that don't depend on the instance or class.
+class MyClass:
+    class_variable = "Class variable"
+
+    @classmethod
+    def class_method(cls):
+        print(cls.class_variable)
+
+    @staticmethod
+    def static_method():
+        print("Static method")
+--------------------------------------------------------------------------------------------------------------------------
+
+5) What do you understand by Tkinter??
+Answer 5) Tkinter is a Python library for creating GUI applications. It provides a set of tools for building windows, buttons, etc.
+
+import tkinter as tk
+
+root = tk.Tk()
+label = tk.Label(root, text="Hello, Tkinter!")
+label.pack()
+root.mainloop()
+
+----------------------------------------------------------------------------------------------------------------------------
+
+6) What is GIL and what are some of the ways to get around it?
+Answer 6) The GIL in CPython prevents multiple native threads from executing Python bytecodes at once. To work around it, you can use the multiprocessing module to parallelize tasks.
+
+from multiprocessing import Pool
+
+def parallel_function(x):
+    return x * x
+
+data = [1, 2, 3, 4, 5]
+with Pool() as pool:
+    result = pool.map(parallel_function, data)
+print(result)
+-------------------------------------------------------------------------------------------------------------------------------
+
+7) Write a code to display the contents of a file in reverse.?
+Answer 7) Here's how you can read a file and print its contents in reverse:
+
+with open('filename.txt', 'r') as file:
+    content = file.read()
+    print(content[::-1])
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+8) Which one of the following is not the correct syntax for creating a set in Python?
+   set([[1,2],[3,4],[4,5]])
+   set([1,2,2,3,4,5])
+   {1,2,3,4}
+   set((1,2,3,4))
+
+Answer 8) The correct syntax is using {}, but the incorrect one involves a list.
+
+# Incorrect syntax
+my_set = set([[1,2],[3,4],[4,5]])
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+9) How do you iterate over a list and pull element indices at the same time?
+Answer 9) You can use the enumerate function to iterate over a list and get both the index and the element.
+
+my_list = ['a', 'b', 'c']
+for index, value in enumerate(my_list):
+    print(f"Index: {index}, Value: {value}")
+--------------------------------------------------------------------------------------------------------------------------------
+
+10)  What is docstring in Python?
+Answer 10) A docstring is a string literal that occurs as the first statement in a module, function, class, or method definition. It provides documentation about the purpose and usage of the code.
+def my_function():
+    """
+    This is a docstring.
+    It provides information about the function.
+    """
+    pass
+-------------------------------------------------------------------------------------------------------------------------------
+
+11) What Are Generator Functions? Write Your Version of Range
+Answer 11) Generator functions use the yield keyword to produce a sequence of values one at a time. Here's a simple version of range as a generator function:
+def my_range(n):
+    i = 0
+    while i < n:
+        yield i
+        i += 1
+
+for num in my_range(5):
+    print(num)
+---------------------------------------------------------------------------------------------------------------------------
+
+12) How many ways can you append or concatenate strings? Which of these ways is fastest? Easiest to read?
+Answer 12) There are multiple ways to concatenate strings, but using join is often considered more efficient, especially for large datasets.
+str1 = "Hello"
+str2 = " World!"
+
+# Using concatenation
+concatenated_string = str1 + str2
+print(concatenated_string)
+
+# Using join
+strings = ["Hello", " World!"]
+joined_string = " ".join(strings)
+print(joined_string)
+---------------------------------------------------------------------------------------------------------------------------
+
+13) What is pickling and unpickling in Python?
+Answer 13) Pickling is the process of converting a Python object into a byte stream, and unpickling is the reverse process. It's often used for serialization.
+
+import pickle
+
+data = {'key': 'value'}
+
+# Pickling
+with open('data.pickle', 'wb') as f:
+    pickle.dump(data, f)
+
+# Unpickling
+with open('data.pickle', 'rb') as f:
+    loaded_data = pickle.load(f)
+
+print(loaded_data)
+---------------------------------------------------------------------------------------------------------------------------------
+
+14) Demonstrate monkey patching and where is it used
+Answer 14) Monkey patching involves dynamically modifying or extending a module or class at runtime. It's often used to change or add functionality to existing code.
+
+class MyClass:
+    def my_method(self):
+        return "Original method"
+
+def new_method(self):
+    return "Patched method"
+
+obj = MyClass()
+obj.my_method()  # Original method
+
+# Monkey patching
+MyClass.my_method = new_method
+obj.my_method()  # Patched method
+----------------------------------------------------------------------------------------------------------------------------------------
+
+15) I'm getting a maximum recursion depth error for a function. What does this mean? How can I mitigate the problem?
+Answer 15) This error occurs when a function calls itself too many times, exceeding the maximum recursion depth. You can increase the recursion limit with sys.setrecursionlimit(), but it's crucial to use it with caution.
+import sys
+
+# Set a higher recursion limit (use with caution)
+sys.setrecursionlimit(1500)
+----------------------------------------------------------------------------------------------------------------------------------------
+
+16)  How do you split the data into train and test datasets?
+Answer 16) To split data into training and testing sets, you can use tools like scikit-learn.
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+----------------------------------------------------------------------------------------------------------------------------------------
+
+17)  What are *args and **kwargs in Python functions?
+Answer 17) *args and **kwargs allow a function to accept a variable number of positional and keyword arguments, respectively.
+def example_function(*args, **kwargs):
+    print("Positional arguments:", args)
+    print("Keyword arguments:", kwargs)
+
+example_function(1, 2, 3, name="John", age=25) 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+18) What’s your favorite standard library module?
+Answer 18) 
+
+collections:
+
+collections provides additional data structures beyond the built-in types, including namedtuples, deques, and more.
+itertools:
+
+itertools provides functions for creating and working with iterators.
+
+subprocess:
+
+subprocess allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes.
+
+re (Regular Expressions):
+
+re provides regular expression matching operations.
+
+urllib:
+
+urllib provides a set of modules for working with URLs.
+sqlite3:
+
+sqlite3 provides a lightweight disk-based database that doesn’t require a separate server process.
+
+----------------------------------------------------------------------------------------------------------------------------------------
